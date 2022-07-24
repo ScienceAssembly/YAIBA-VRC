@@ -148,14 +148,18 @@ public class Orientation : UdonSharpBehaviour
         _isAgreeed = true;
         // 初回同期を行う
         _elapseSyncTime = _syncInterval;
-        Networking.LocalPlayer.TeleportTo(_teleportTo.transform.position, _teleportTo.transform.rotation);
+        if (_teleportTo != null) {
+            Networking.LocalPlayer.TeleportTo(_teleportTo.transform.position, _teleportTo.transform.rotation);
+        }
     }
     public void PressedNG()
     {
         _isAgreeed = false;
         // 初回同期を行う
         _elapseSyncTime = _syncInterval;
-        Networking.LocalPlayer.TeleportTo(_teleportTo.transform.position, _teleportTo.transform.rotation);
+        if (_teleportTo != null) {
+            Networking.LocalPlayer.TeleportTo(_teleportTo.transform.position, _teleportTo.transform.rotation);
+        }
     }
 
     // =================================

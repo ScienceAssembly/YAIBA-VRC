@@ -7,7 +7,7 @@ using VRC.Udon;
 [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 public class StaffSetting : UdonSharpBehaviour
 {
-    [SerializeField] private string[] _staffName;
+    [SerializeField] private string[] _staffNames;
     [SerializeField] private GameObject[] _staffActiveObjects;
     private const int PLAYER_MAX = 100;
 
@@ -17,8 +17,8 @@ public class StaffSetting : UdonSharpBehaviour
     public bool IsStaff(string displayName)
     {
         bool ret = false;
-        for (int i=0; i<_staffName.Length; i++) {
-            if (_staffName[i] == displayName) {
+        for (int i=0; i<_staffNames.Length; i++) {
+            if (_staffNames[i] == displayName) {
                 ret = true;
                 break;
             }
