@@ -4,12 +4,15 @@ YAIBA library for VRChat World
 ## Features
 * Staff setting feature
     * Register a specific player as a staff member
-    * Output position and rotation infomation to VRChat log files only for players registered as staff
+    * Output position, rotation and questionnaire infomation to VRChat log files only for players registered as staff
     * Set GameObjects to be displayed only to players registered as staff
 * Position and rotation logging feature
     * Confirm the player's consent for position and rotation logging
     * Periodically obtain and log position and rotation information for players who agree to.
     * Display the position and rotation information of players who agree to on the in-game debug panel (for debugging)
+* Questionnaire feature
+    * Set up questionnaire question text and choices
+    * Obtain and log questionnaire results
 
 ## Usage
 1. Import VRCSDK3-WORLD and UdonSharp
@@ -25,6 +28,13 @@ YAIBA library for VRChat World
         * YAIBA/Orientation/OrientationGimmick
             * Measure Interval：Interval at which position and rotation information log to a VRChat log file
             * Teleport to：Teleport destination after confirming the player's consent to the position and rotation logging. If teleportation is not required, it is deactivated.
+        * YAIBA/Questionnaire/QuestionnaireGimmick
+            * Questions：Set up the Question Text and Choices; **the Size of Questions must be less than or equal to 11.**
+            Each Element consists of a question in the first paragraph, followed by Choices(up to 6 Choices). **Size of each Element should be 7 or less.**
+            * Questions Fontsize：Font size of the question text and choices.
+            * Next Question：Next question number for each choice. The question number for Question 1 is [0], Question 2 is [1]...  If the question number is set to [Size of Questions], it will be redirected to the questionnaire confirmation screen.
 
 ## License
-YAIBA-VRC is under MIT license.
+YAIBA-VRC is under MIT license.  
+YAIBA-VRC is copyrighted by the VRC Science Assembly(VRC理系集会).  
+It would be nice if you could indicate in the VRChat world that you are using YAIBA library.
