@@ -3,6 +3,7 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
+using VRC.Udon.Serialization.OdinSerializer;
 
 [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 public class Questionnaire : UdonSharpBehaviour
@@ -21,7 +22,7 @@ public class Questionnaire : UdonSharpBehaviour
     [Header("質問文と選択肢の設定。QuestionsのSizeは11以下とすること。")]
     [Header("各Elementは第一項が質問文、それ以降は選択肢（最大6個まで）。各ElementのSizeは7以下とすること。")]
     [Header("========================")]
-    [SerializeField] private string[][] _questions = new string[][] { // _questionNumで指定した件数を指定すること。各行は、第一項が質問文、それ以降は選択肢（最大6個まで）
+    [OdinSerialize] public string[][] _questions = new string[][] { // _questionNumで指定した件数を指定すること。各行は、第一項が質問文、それ以降は選択肢（最大6個まで）
         new string[] {"当イベントを何で知りましたか", "Twitter", "人に紹介してもらった", "フレンドにJoinした", "フレンドにInviteされた", "YouTubeチャンネルを見た", "その他"},
         new string[] {"何のTwitterで知りましたか？", "公式Twitterアカウント", "フレンドのTwitter", "その他のTwitter"},
         new string[] {"イベントに満足しましたか？", "とても満足した", "満足した", "どちらでもない", "満足していない", "とても満足していない"},
@@ -34,7 +35,7 @@ public class Questionnaire : UdonSharpBehaviour
     [Header("======== Questions Fontsize ========")]
     [Header("質問文と選択肢のフォントサイズ。QuestionsのSizeと合わせること。")]
     [Header("===============================")]
-    [SerializeField] private int[][] _questionsFontsize = new int[][] { // 質問文、選択肢のフォントサイズ
+    [OdinSerialize] public int[][] _questionsFontsize = new int[][] { // 質問文、選択肢のフォントサイズ
         new int[] {223, 110, 110, 110, 110, 110, 110},
         new int[] {223, 110, 110, 110, 110, 110, 110},
         new int[] {223, 110, 110, 110, 110, 110, 110},
@@ -49,7 +50,7 @@ public class Questionnaire : UdonSharpBehaviour
     [Header("質問1の質問番号は[0]、質問2の質問番号は[1]...となる。")]
     [Header("質問番号を[QuestionsのSize]とすると、アンケート確認画面に遷移する。")]
     [Header("===========================")]
-    [SerializeField] private int[][] _nextQuestion = new int[][] { // 選択肢毎の次の質問番号。質問1の質問番号は[0]、質問2の質問番号は[1]...となる。質問番号[_questionNum]とすると、アンケート確認画面に遷移する。
+    [OdinSerialize] public int[][] _nextQuestion = new int[][] { // 選択肢毎の次の質問番号。質問1の質問番号は[0]、質問2の質問番号は[1]...となる。質問番号[_questionNum]とすると、アンケート確認画面に遷移する。
         new int[] { 1   ,  2    ,  2    ,  2    ,  2    ,  2}, // [0] 質問1の選択肢毎の次の質問の番号
         new int[] { 2   ,  2    ,  2    ,  2    ,  2    ,  2}, // [1] 質問2の選択肢毎の次の質問の番号
         new int[] { 3   ,  3    ,  3    ,  3    ,  3    ,  3}, // [2] 質問3の選択肢毎の次の質問の番号
